@@ -1,0 +1,187 @@
+*{ margin: 0;
+    padding: 0;
+}
+.header-reg-page2{
+    height: 11em;
+    background: url(Background/cover-image.jpg) no-repeat center center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+#nav-reg-page2{
+    display: flex;
+    /* align-items: center; */
+    height: 60%;
+}
+ #navbar-reg-page2{
+    display:flex;
+    color: #ffff;
+    /* justify-items: center; */
+    /* align-self: center; */
+    background-color: #34495EBF;
+    height: 55px;
+    margin: 2.5% 12% 10px 12%;
+    width: 100%;
+}
+#logo{
+    width: 50%;
+    height: 55px;
+}
+#logo img{
+    height: 100%;
+    width: 34.2%;
+}
+
+#company_mail_id{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 50%; 
+    padding-right: 2%;
+    font-size: 14px;
+    font-family: roboto, "sans-serif";
+
+}
+
+.heading{
+    color: #ffff;
+    /* background-color: red; */
+    display: flex;
+    margin: 1% 12% 0px 12%;
+    padding: 30px 0px 0.1px 0px;
+    justify-content: space-around;
+    font-size: 15px;
+    font-family: Roboto, "Sans-serif";
+    opacity: 0.75;
+    width: 78%;
+}
+#profile_details{
+    width: 25%;
+    text-align: center;
+    border-bottom: 2px solid #ffff;
+}
+ header hr{
+    margin-left: 15.199%;
+    max-width: 71.4%;
+    border-top: 0.02rem solid white;
+} 
+
+main{
+    background-color: rgb(245 245 245);
+    height: fit-content;
+}
+
+.txt{
+    text-align: center;
+    font-family: "Roboto", "sans-serif";
+    font-weight: 300;
+    color: #4c4151;
+    padding-top: 30px;
+    font-size: 22px;
+    margin-left: 15%;
+    margin-right: 15%;
+    position: relative;
+    width: 70%;
+}
+.txtr{
+text-align: end;
+margin-left: 20%;
+margin-right: 15%;
+width: 50%;
+font-family: "Roboto", "sans-serif";
+font-weight: 300;
+font-size: 12px;
+margin-top: 18px;
+}
+.txtr span {
+    color: red;
+    font-size: 12px;
+}
+aside{
+/* background-color: red;     */
+float: right;
+width: 30%;
+}
+
+
+.reg-sprite{
+    background-image: url(Reg_logo/reg-spirite.png);
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+
+}
+.regContainer{
+    /* background-color: red; */
+    height: 100%;
+    width:76%;
+    margin-left: 12%;
+    margin-right: 12%;
+    display: flex;
+}
+#lgc {
+    height: 100%;
+    display: flex;
+}
+.icon1{
+    width: 39px;
+   height: 44px;
+}
+#reg-form{
+    display: flex;
+    height: 100%;
+    width: 80%;
+    /* background-color:green; */
+    justify-content: center;
+}
+#reg-form form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#form-element{
+display: flex;
+width: 100%;
+justify-content: space-evenly;
+padding-top: 10px;
+padding-bottom: 10px;
+font-family: Roboto,"Sans-serif";
+font-size: 14px;
+}
+#intake input{
+    height: 2em;
+    text-align: center;
+}
+#ele-display{
+    /* background-color: red; */
+    width: 50%;
+        display: flex;
+        justify-content: center;
+}
+input#input-date-of-birth {
+    width: 13em;
+}
+.sprite-container{
+display: flex;
+
+}
+.icon2{
+    width: 39px;
+   height: 44px;
+}
+.icon3{
+    width: 39px;
+   height: 44px;
+}
+#intake #button{
+    background-color:#d9475c ;
+    border: none;
+    width: 200px;
+    font-size: 20px;
+    height: 52px;
+    font-weight: 400;
+}
+#intake   #button:hover{
+    background-color:red ;
+}
