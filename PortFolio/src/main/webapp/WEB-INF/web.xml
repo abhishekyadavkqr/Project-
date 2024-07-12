@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>PortFolio</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  <servlet-name>loginhtml</servlet-name>
+  <jsp-file>/landing_content/login.html</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>loginhtml</servlet-name>
+  <url-pattern>/login.htm</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>indexhtml</servlet-name>
+  <jsp-file>/landing_content/index.html</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>indexhtml</servlet-name>
+  <url-pattern>/index.html</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <!--configuration of SuggestionReciever -->
+  
+  <servlet>
+  	<servlet-name>landing</servlet-name>
+  	<servlet-class>com.portfolio.abhi.SuggestionReciever</servlet-class>
+  	<init-param>
+  	<param-name>jndi</param-name>
+	<param-value>java:/comp/env/DsJndi</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>landing</servlet-name>
+  <url-pattern>/suggest.in</url-pattern>
+  </servlet-mapping>
+  
+  <!--configuration of AdminLoginServlet -->
+  <servlet>
+  	<servlet-name>admin</servlet-name>
+  	<servlet-class>com.portfolio.abhi.AdminLoginServlet</servlet-class>
+  	<init-param>
+  	<param-name>jndi</param-name>
+	<param-value>java:/comp/env/DsJndi</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>admin</servlet-name>
+  <url-pattern>/login.in</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
