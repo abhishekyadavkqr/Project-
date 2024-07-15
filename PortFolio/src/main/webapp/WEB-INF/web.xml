@@ -24,15 +24,19 @@
   
   
   
-  <!--configuration of BeanServlet -->
+  <!-- configuration of context-param -->
   
+ 
+
+  <!-- configuration of BeanServlet -->
+
   <servlet>
   	<servlet-name>bean</servlet-name>
   	<servlet-class>com.portfolio.bean.BeanServlet</servlet-class>
-  	<init-param>
-  	<param-name>jndi</param-name>
-	<param-value>java:/comp/env/DsJndi</param-value>
-  	</init-param>
+  	 <init-param>
+    	<param-name>jndi</param-name>
+	    <param-value> java:/comp/env/DsJndi </param-value>
+  </init-param>
   </servlet>
  
   <servlet-mapping>
@@ -44,6 +48,7 @@
   <!--configuration of SuggestionReciever -->
   
   <servlet>
+  
   	<servlet-name>landing</servlet-name>
   	<servlet-class>com.portfolio.abhi.SuggestionReciever</servlet-class>
   	  </servlet>
@@ -53,6 +58,7 @@
   </servlet-mapping>
   
   <!--configuration of AdminLoginServlet -->
+  
   <servlet>
   	<servlet-name>admin</servlet-name>
   	<servlet-class>com.portfolio.abhi.AdminLoginServlet</servlet-class>

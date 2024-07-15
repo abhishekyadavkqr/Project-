@@ -9,13 +9,16 @@ import java.sql.SQLException;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.portfolio.bean.BeanServlet;
+
 
 public class AdminLoginServlet extends HttpServlet {
 
@@ -26,13 +29,17 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 			
 				res.setContentType("text/html");
-				PrintWriter pw = res.getWriter();BeanServlet bs = new BeanServlet();
-				try(PreparedStatement ps = bs.getPooledConnection().prepareStatement(ADMIN_LOGIN)) {
+				PrintWriter pw = res.getWriter(); 
+			
+				ServletContext sc = getServletContext();
+				BeanServlet bs = new BeanServlet();
+				
+				try(PreparedStatement ps = bs.getPooledConnection(sc).prepareStatement(ADMIN_LOGIN)) {
 							String username = req.getParameter("mail");
 							String password = req.getParameter("password");
 							ps.setString(1, username);
 							ps.setString(2, password);
-							System.out.println("username : "+username+"\npassword : "+password);
+							System.out.println("username : "+username+"\npassword : " + password);
 							
 							ResultSet rs = ps.executeQuery();
 							if(rs == null) {
@@ -41,44 +48,9 @@ public class AdminLoginServlet extends HttpServlet {
 							}
 							rs.next();
 							if( rs.getInt(1)==1) {
-//								BeanServlet bs = new BeanServlet();
-								
-//								try(PreparedStatement ps1 = bs.getPooledConnection().prepareStatement(RETRIEVE_MESSAGES);){
-//									ResultSet rs1 = ps1.executeQuery();
-//									boolean flag = false;
-//									pw.println("<head>\r\n"
-//											+ "    <title>message display</title>"
-//											+ "</head>"
-//											+ "<body>"
-//											+ " <div style=\"display: flex; height: 100%; width: 100%; justify-content: center; align-items:start; line-height: 10px; border: 2px solid black;\">"
-//											+ " <form action='' method='post'>"
-//											
-//											+ "  <table border=\"1\">\r\n"
-//											+ "   <tr>\r\n"
-//											+ "   <th>sr. no</th>\r\n"
-//											+ "   <th> Name</th>\r\n"
-//											+ "   <th> Mail</th>\r\n"
-//											+ "   <th> Message</th>\r\n"
-//											+ "   </tr>");
-//									while(rs1.next()) {
-//										flag = true;
-//										pw.println("<tr>\r\n"
-//												+ "  <td>"+ rs1.getString(1)+"</td>" 
-//												+ "  <td>"+ rs1.getString(2)+"</td>"
-//												+ "  <td>"+ rs1.getString(3)+"</td>"
-//												+ "  <td>"+ rs1.getString(4)+"</td>"
-//												+ "  <td><input type=\"submit\" value='"+rs1.getString(1)+"' name=\"delete\" > </td>"
-//												
-//												+ "  </tr>");
-//									}
-//									if(flag )
-//										pw.println("</form> </table></div><br><br> <a href=\"index.html\"><input type=\"button\" value=\"Back\"></a></body>");
-//									
-//									else 
-//										pw.println("<h2> No Messages...</h2><br><br> <a href=\"index.html\"><input type=\"button\" value=\"Back\"></a>");
-//									
-//
-//								}
+//								 RequestDispatcher rd =  req.getRequestDispatcher("/bean.in");
+//								 rd.include(req, res);
+									
 							}
 							else
 								pw.println("<h2> Entered username or password invalid..</h2>");
