@@ -17,7 +17,7 @@ public class DeleteFeedback extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 				
-			pw
+			
 	}
 	
 //	Database object provider
