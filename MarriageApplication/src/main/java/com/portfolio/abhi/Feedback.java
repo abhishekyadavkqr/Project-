@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,19 +19,21 @@ import com.portfolio.bean.BeanServlet;
 //@WebServlet("/feedback")
 public class Feedback extends HttpServlet {
 	private static final String RETRIEVE_MESSAGES = "SELECT FEEDBACK_ID, PERSON_NAME, PERSON_MAIL_ID, MESSAGE FROM SUGGESTION ORDER BY FEEDBACK_ID ASC";
-	
+
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse res) throws ServletException,IOException {
-		
+
 							res.setContentType("text/html");
                 PrintWriter pw = res.getWriter();
                 ServletContext sc = getServletContext();
 		BeanServlet bs = new BeanServlet();
-		
+
 		try(PreparedStatement ps1 = bs.getPooledConnection(sc).prepareStatement(RETRIEVE_MESSAGES);){
 			ResultSet rs1 = ps1.executeQuery();
 			boolean flag = false;
@@ -42,7 +43,7 @@ public class Feedback extends HttpServlet {
 					+ "<body>"
 					+ " <div style=\"display: flex; height: 100%; width: 100%; justify-content: center; align-items:start; line-height: 10px; border: 2px solid black;\">"
 					+ " <form action='' method='post'>"
-					
+
 					+ "  <table border=\"1\">\r\n"
 					+ "   <tr>\r\n"
 					+ "   <th>sr. no</th>\r\n"
@@ -53,22 +54,22 @@ public class Feedback extends HttpServlet {
 			while(rs1.next()) {
 				flag = true;
 				pw.println("<tr>\r\n"
-						+ "  <td>"+ rs1.getString(1)+"</td>" 
+						+ "  <td>"+ rs1.getString(1)+"</td>"
 						+ "  <td>"+ rs1.getString(2)+"</td>"
 						+ "  <td>"+ rs1.getString(3)+"</td>"
 						+ "  <td>"+ rs1.getString(4)+"</td>"
 						+ "  <td><input type=\"submit\" value='"+rs1.getString(1)+"' name=\"delete\" > </td>"
-						
+
 						+ "  </tr>");
 			}
-			if(flag )
+			if(flag ) {
 				pw.println("</form> </table></div><br><br> <a href=\"index.html\"><input type=\"button\" value=\"Back\"></a></body>");
-			
-			else 
+			} else {
 				pw.println("<h2> No Messages...</h2><br><br> <a href=\"index.html\"><input type=\"button\" value=\"Back\"></a>");
-			
+			}
+
 		} catch (SQLException | NamingException e) {
-			
+
 			pw.println("<h2> Server Error..</h2>");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
