@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.portfolio.bean.BeanServlet;
 
 
-@WebServlet("/feedback")
+//@WebServlet("/feedback")
 public class Feedback extends HttpServlet {
 	private static final String RETRIEVE_MESSAGES = "SELECT FEEDBACK_ID, PERSON_NAME, PERSON_MAIL_ID, MESSAGE FROM SUGGESTION ORDER BY FEEDBACK_ID ASC";
 	

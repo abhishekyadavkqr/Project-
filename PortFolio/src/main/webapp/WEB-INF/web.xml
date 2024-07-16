@@ -25,23 +25,25 @@
   
   
   <!-- configuration of context-param -->
-  
- 
+   <context-param>
+    	<param-name>jndi</param-name>
+	    <param-value> java:/comp/env/DsJndi </param-value>
+  </context-param>
 
   <!-- configuration of BeanServlet -->
 
   <servlet>
-  	<servlet-name>bean</servlet-name>
-  	<servlet-class>com.portfolio.bean.BeanServlet</servlet-class>
-  	 <init-param>
+  	<servlet-name>feed</servlet-name>
+  	<servlet-class>com.portfolio.abhi.Feedback</servlet-class>
+  	<!--   <init-param>
     	<param-name>jndi</param-name>
 	    <param-value> java:/comp/env/DsJndi </param-value>
-  </init-param>
+  </init-param>  -->
   </servlet>
  
   <servlet-mapping>
-  <servlet-name>bean</servlet-name>
-  <url-pattern>/bean.in</url-pattern>
+  <servlet-name>feed</servlet-name>
+  <url-pattern>/feedback.in</url-pattern>
   </servlet-mapping>
  
  
@@ -62,6 +64,7 @@
   <servlet>
   	<servlet-name>admin</servlet-name>
   	<servlet-class>com.portfolio.abhi.AdminLoginServlet</servlet-class>
+  	
   	
   </servlet>
   <servlet-mapping>

@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+
+import com.portfolio.bean.BeanServlet;
 
 
 
@@ -45,11 +48,12 @@ public class AdminLoginServlet extends HttpServlet {
 							if(rs == null) {
 								rs = ps.executeQuery();
 								System.out.println("rs is null");
-							}
+							}  
 							rs.next();
 							if( rs.getInt(1)==1) {
-//								 RequestDispatcher rd =  req.getRequestDispatcher("/bean.in");
-//								 rd.include(req, res);
+								pw.println("<h2> Entered username or password valid..</h2>");
+								 RequestDispatcher rd =  req.getRequestDispatcher("/feedback.in");
+								 rd.include(req, res);
 									
 							}
 							else
