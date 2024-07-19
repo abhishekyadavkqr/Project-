@@ -41,6 +41,7 @@ public class Feedback extends HttpServlet {
 					+ "    <title>message display</title>"
 					+ "</head>"
 					+ "<body>"
+					+ "<a href='index.html'><input type='button' value='Back' style='color:red'></a>"
 					+ " <div style=\"display: flex; height: 100%; width: 100%; justify-content: center; align-items:start; line-height: 10px; border: 2px solid black;\">"
 					+ " <form action='' method='post'>"
 
@@ -58,14 +59,14 @@ public class Feedback extends HttpServlet {
 						+ "  <td>"+ rs1.getString(2)+"</td>"
 						+ "  <td>"+ rs1.getString(3)+"</td>"
 						+ "  <td>"+ rs1.getString(4)+"</td>"
-						+ "  <td><input type=\"submit\" value='"+rs1.getString(1)+"' name=\"delete\" > </td>"
+						+ "  <td>  <a href='delete.in?del="+rs1.getString(1)+"'  > delete</a> </td>"
 
 						+ "  </tr>");
 			}
 			if(flag ) {
-				pw.println("</form> </table></div><br><br> <a href=\"index.html\"><input type=\"button\" value=\"Back\"></a></body>");
+				pw.println("</form> </table></div><br><br> </body>");
 			} else {
-				pw.println("<h2> No Messages...</h2><br><br> <a href=\"index.html\"><input type=\"button\" value=\"Back\"></a>");
+				pw.println("<h2> No Messages...</h2><br><br>");
 			}
 
 		} catch (SQLException | NamingException e) {
@@ -73,6 +74,9 @@ public class Feedback extends HttpServlet {
 			pw.println("<h2> Server Error..</h2>");
 			System.out.println(e.getMessage());
 			e.printStackTrace();
+		}
+		finally {
+			bs.closePooledConnection();
 		}
 
 	}

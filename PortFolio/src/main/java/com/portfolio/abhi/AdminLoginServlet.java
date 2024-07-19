@@ -51,11 +51,10 @@ public class AdminLoginServlet extends HttpServlet {
 							}  
 							rs.next();
 							if( rs.getInt(1)==1) {
-								pw.println("<h2> Entered username or password valid..</h2>");
+//								pw.println("<h2> Entered username or password valid..</h2>");
 								 RequestDispatcher rd =  req.getRequestDispatcher("/feedback.in");
 								 rd.include(req, res);
-									
-							}
+  							}
 							else
 								pw.println("<h2> Entered username or password invalid..</h2>");
 				
@@ -66,6 +65,9 @@ public class AdminLoginServlet extends HttpServlet {
 					pw.println("<h2> Server Error..</h2>");
 					System.out.println(e.getMessage());
 					e.printStackTrace();
+				}
+				finally {
+					bs.closePooledConnection();
 				}
 				
 	}

@@ -72,4 +72,19 @@
   <url-pattern>/login.in</url-pattern>
   </servlet-mapping>
   
+  
+  
+  <!--configuration of DeleteFeedback -->
+  
+  <servlet>
+  	<servlet-name>delete</servlet-name>
+  	<servlet-class>com.portfolio.abhi.DeleteFeedback</servlet-class>
+  	
+  	
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>delete</servlet-name>
+  <url-pattern>/delete.in</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.portfolio.bean.BeanServlet;
+
 public class SuggestionReciever extends HttpServlet {
 	private static final String SUGGESTION_INSERT_QUERY= "INSERT INTO SUGGESTION VALUES (FEED_ID.NEXTVAL,?,?,?)";
 @Override
@@ -26,8 +28,8 @@ public void doPost(HttpServletRequest req, HttpServletResponse res) throws Servl
 	 				String feedback =req.getParameter("feedback");
 	 				System.out.println("Name : "+name+"\nmail : "+mail+"\nfeedback : "+feedback);
 	 				
-	 				
-	 				try(PreparedStatement ps = getPooledConnection().prepareStatement(SUGGESTION_INSERT_QUERY);){
+	 					BeanServlet bs = new BeanServlet();
+	 				try(PreparedStatement ps = bs.getPooledConnection(getServletContext()).prepareStatement(SUGGESTION_INSERT_QUERY);){
 	 					if(ps!= null)
 	 					{
 	 						ps.setString(1, name);
@@ -47,16 +49,20 @@ public void doPost(HttpServletRequest req, HttpServletResponse res) throws Servl
 				
 						pw.println("<h2 style='text-align:center> Server Error!<br> Please try again.</h2>");
 					}
+	 				finally {
+						bs.closePooledConnection();
+						pw.close();
+					}
 }
 
 // Connection Provider
-private Connection getPooledConnection() throws NamingException, SQLException {
-	Connection con = null;
-	InitialContext ic = new InitialContext();
-	DataSource ds = (DataSource) ic.lookup(getServletConfig().getInitParameter("jndi"));
-	con =       ds.getConnection();
-	return con;
+//private Connection getPooledConnection() throws NamingException, SQLException {
+//	Connection con = null;
+//	InitialContext ic = new InitialContext();
+//	DataSource ds = (DataSource) ic.lookup(getServletConfig().getInitParameter("jndi"));
+//	con =       ds.getConnection();
+//	return con;
 	
 	
-}
+
 }
